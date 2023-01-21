@@ -1,5 +1,5 @@
 # Series Frame Maker
-Checks a folder for all video files and uses FFMPEG to convert them to frames
+Checks a folder for all video files and uses FFMPEG to convert them to frames, separating each episode into its own folder.
 
 ## Features:
 Creates frames with and without subtitles at the same time
