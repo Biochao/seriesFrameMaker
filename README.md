@@ -1,7 +1,7 @@
 # Series Frame Maker
 Checks a folder for all video files and uses FFMPEG to convert them to frames
 
-Features:
+## Features:
 Creates frames with and without subtitles at the same time
 
 Configurable framerate
@@ -14,7 +14,7 @@ Customizable font and font size for subtitles
 
 Creates a progress.txt file in source folder in case encoding gets interupted. The next time the script is opened it will skip the number of files in progress.txt
 
-How to Use:
+## How to Use:
 
 1. set the sources folder
 
