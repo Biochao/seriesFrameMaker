@@ -2,12 +2,13 @@
 Checks a folder for all video files and uses FFMPEG to convert them to frames
 
 Features:
+Creates frames with and without subtitles at the same time
 
 Configurable framerate
 
 Reads season an episode numbers from filenames using regex. By default it's looking for an x inbetween numbers. ie 1x02
 
-Checks for a coresponding subtitle file
+Checks for a coresponding subtitle file. If it can't find one it just creates frames without burning in subs
 
 Customizable font and font size for subtitles
 
