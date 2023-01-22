@@ -57,7 +57,7 @@ for i, file in enumerate(os.listdir(sources)):
             subprocess.run(["ffmpeg", "-loglevel", "quiet", "-copyts", "-i", video, "-r", "1000", "-vf", f"fps=fps={fps},subtitles={subs}:force_style='Fontsize={font_size},Fontname={font_name}'", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder_subs, output_names), "-r", "1000", "-vf", f"fps=fps={fps}", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder, output_names)])
         else:
             print(f"Processing {video} no subs")
-            subprocess.run(["ffmpeg", "-loglevel", "quiet", "-copyts", "-i", video_path, "-r", "1000", "-vf", f"fps=fps={fps}", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder, output_names)])
+            subprocess.run(["ffmpeg", "-loglevel", "quiet", "-copyts", "-i", video, "-r", "1000", "-vf", f"fps=fps={fps}", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder, output_names)])
         
         # Increment the index
         index += 1
