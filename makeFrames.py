@@ -51,7 +51,11 @@ for i, file in enumerate(os.listdir(sources)):
         episode_folder = f"s{seasonNum}e{episodeNum}"
         episode_folder_subs = episode_folder + "sub"
         os.makedirs(os.path.join(output_folder, episode_folder), exist_ok=True)
-        if os.path.isfile(subs):
+        if os.path.isfile(subs) and sub == ".ass" :
+            os.makedirs(os.path.join(output_folder, episode_folder_subs), exist_ok=True)
+            print(f"Processing {video} with .ass subs")
+            subprocess.run(["ffmpeg", "-loglevel", "quiet", "-copyts", "-i", video, "-r", "1000", "-vf", f"fps=fps={fps},ass={subs}", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder_subs, output_names), "-r", "1000", "-vf", f"fps=fps={fps}", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder, output_names)])
+        elif os.path.isfile(subs):
             os.makedirs(os.path.join(output_folder, episode_folder_subs), exist_ok=True)
             print(f"Processing {video} with subs")
             subprocess.run(["ffmpeg", "-loglevel", "quiet", "-copyts", "-i", video, "-r", "1000", "-vf", f"fps=fps={fps},subtitles={subs}:force_style='Fontsize={font_size},Fontname={font_name}'", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder_subs, output_names), "-r", "1000", "-vf", f"fps=fps={fps}", "-frame_pts", "true", "-vsync", "vfr", "-q:v", "1", os.path.join(output_folder, episode_folder, output_names)])
