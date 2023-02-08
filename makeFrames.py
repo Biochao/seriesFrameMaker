@@ -28,9 +28,12 @@ else:
     index = 0
     print("No index file found. Starting from the beginning")
 
+#list of video file extensions to look for
+extensions = [".mkv", ".mp4", ".m4v"]
+    
 # Use the os.listdir() function to get a list of all files in the folder
 for i, file in enumerate(os.listdir(sources)):
-    if file.endswith(".mkv") or file.endswith(".mp4"):
+    if file.endswith(tuple(extensions)):
         # Skip files before the saved index
         if i < index:
             continue
