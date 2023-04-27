@@ -16,6 +16,9 @@ fps = 2.1
 font_name = "Arial"
 font_size = 12
 
+# Set the starting index if partially completed and no progress file was made. This is the amount of files in the source folder you want to skip. Set to 0 to do everything.
+start_index = 0
+
 # Change the working directory to the sources folder
 os.chdir(sources)
 # Load the index from a file (or initialize it to 0 if the file doesn't exist)
@@ -25,18 +28,16 @@ if os.path.exists(index_file):
         index = int(f.read())
     print("Progress file found. Resuming.")
 else:
-    index = 0
+    index = start_index
     print("No index file found. Starting from the beginning")
 
 #list of video file extensions to look for
 extensions = [".mkv", ".mp4", ".m4v"]
-    
+
 # Use the os.listdir() function to get a list of all files in the folder
-for i, file in enumerate(os.listdir(sources)):
+file_list = os.listdir(sources)
+for i, file in enumerate(file_list[index:], start=index):
     if file.endswith(tuple(extensions)):
-        # Skip files before the saved index
-        if i < index:
-            continue
         print(index+1)
         # Get the file name and extension
         file_name, file_ext = os.path.splitext(file)
@@ -71,3 +72,4 @@ for i, file in enumerate(os.listdir(sources)):
         # Save progress to text file
         with open("progress.txt", "w") as f:
             f.write(str(index))
+os.remove("progress.txt")
