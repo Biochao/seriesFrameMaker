@@ -31,3 +31,10 @@ This is the frames naming convention. FFMPEG will name frames based on timestamp
 6. Set the font_name and font_size. Use the font family name. This is different from the font file name.
 
 7. Run the script. A progress.txt file will be created in the sources folder incase of crashes.
+
+## Trimming frames
+Make sure to install the 'scikit-image', 'cv2', and 'numpy' libraries before running this
+
+Run trim_similar_frames.py with your folders set to delete any frames that are 95% the same
+
+It will check the lower 20% of the frame again before deleting to make sure the subtitle hasn't changed
